@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
@@ -6,7 +6,6 @@ android {
     buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.coffeearmy.photoetry"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
         versionCode 1
@@ -21,20 +20,22 @@ android {
 }
 
 dependencies {
+    def dependencies = rootProject.ext.modelDependencies
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    def dependencies = rootProject.ext.appDependencies
-    compile dependencies.appCompatV7
-    compile dependencies.recyclerView
-    compile dependencies.cardView
-    compile dependencies.supportDesign
     compile dependencies.rxJava
     compile dependencies.rxAndroid
+    compile dependencies.gson
+    compile dependencies.retrofit
+    compile dependencies.retrofitGson
+    compile dependencies.retrofitRxJava
+    compile dependencies.okHttp
+    compile dependencies.okHttpLogging
     compile dependencies.dagger
+    compile dependencies.jsrApi
+    compile dependencies.commonsCodec
     apt dependencies.daggerCompiler
-    provided dependencies.jsrApi
-    compile dependencies.butterknife
-    compile dependencies.glide
     compile project(':domain')
-    compile project(':data')
     testCompile dependencies.jUnit
+
 }

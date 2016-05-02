@@ -1,1 +1,1 @@
-include ':app', ':caffeineviews'
+include ':app', ':caffeineviews', ':data', ':domain'
